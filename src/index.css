@@ -1,68 +1,85 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://api.fontshare.com/v2/css?f[]=chillax@1&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=alpino@1&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer components {
+  .noise-bg {
+    @apply bg-[rgb(250,250,250)] relative;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 20px 20px;
+    transition: background-position 0.1s ease-out;
   }
-  a:hover {
-    color: #747bff;
+
+  .font-chillax {
+    font-family: "Chillax", sans-serif;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .font-alpino {
+    font-family: "Alpino", sans-serif;
+  }
+
+  .dotted-blur-bg {
+    background-color: transparent;
+    background-image: radial-gradient(
+      rgba(0, 0, 0, 0) 1px,
+      rgba(241, 245, 249, 0.97) 1px
+    );
+    background-size: 4px 4px;
+    backdrop-filter: blur(3px);
+    mask-image: linear-gradient(
+      to bottom,
+      rgb(0, 0, 0) 0%,
+      rgb(0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.8) 65%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.1) 90%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .dotted-blur-bg-dark {
+    background-color: transparent;
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0) 1px,
+      rgb(16, 18, 21) 1px
+    );
+    background-size: 4px 4px;
+    backdrop-filter: blur(2px);
+    mask-image: linear-gradient(
+      to bottom,
+      rgb(0, 0, 0) 0%,
+      rgb(0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.8) 65%,
+      rgba(0, 0, 0, 0.4) 75%,
+      rgba(0, 0, 0, 0.2) 82%,
+      rgba(0, 0, 0, 0.05) 88%,
+      rgba(0, 0, 0, 0.01) 90%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  /* Hover effect with radial gradient */
+  .bg-nav-pattern {
+    background: radial-gradient(
+      800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.06),
+      transparent 40%
+    );
+  }
+
+  .group:hover .bg-nav-pattern {
+    opacity: 1;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }
