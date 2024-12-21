@@ -25,6 +25,23 @@ const InterestSection = ({ title, icon, children }) => (
   </motion.div>
 );
 
+// Helper component for images with hover effect
+const ImageWithHover = ({ src, alt, className }) => (
+  <div className="relative h-full group pointer-events-auto overflow-hidden rounded-lg">
+    <a className="block h-full">
+      <img
+        src={src}
+        alt={alt}
+        className={`${className} group-hover:scale-[1.02] transition-all duration-500 brightness-90 group-hover:brightness-100`}
+      />
+      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] group-hover:backdrop-blur-sm" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <p className="text-xl text-white font-alpino text-center px-6">{alt}</p>
+      </div>
+    </a>
+  </div>
+);
+
 const About = () => {
   const instruments = [
     "Piano",
@@ -64,31 +81,6 @@ const About = () => {
 
         {/* Interests Sections */}
         <div className="max-w-4xl mx-auto space-y-32">
-          {/* Marine Life Section */}
-          <InterestSection
-            title="Orca Lover"
-            icon={<IconFish className="w-8 h-8 text-sky-400" stroke={1.5} />}
-          >
-            <p className="text-slate-200 text-lg leading-relaxed font-alpino">
-              I have a deep fascination with orcas, these intelligent and
-              majestic creatures of the ocean. Their complex social structures
-              and hunting strategies never cease to amaze me. Also, they are so
-              cute!
-            </p>
-            <div className="grid grid-cols-2 gap-6">
-              <img
-                src="/orca1.jpg"
-                alt="Orca breaching"
-                className="rounded-lg aspect-video object-cover shadow-lg border border-slate-700/50"
-              />
-              <img
-                src="/orca2.jpg"
-                alt="Orca pod"
-                className="rounded-lg aspect-video object-cover shadow-lg border border-slate-700/50"
-              />
-            </div>
-          </InterestSection>
-
           {/* Music Section */}
           <InterestSection
             title="Musical Journey"
@@ -109,25 +101,70 @@ const About = () => {
               ))}
             </div>
             <div className="grid grid-cols-3 gap-6">
-              <img
-                src="/music1.jpg"
-                alt="Playing piano"
-                className="rounded-lg aspect-video object-cover shadow-lg border border-slate-700/50"
+              <ImageWithHover
+                src="/marimba.jpg"
+                alt="Marimba (not my marimba. they are very expensive)"
+                className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
-              <img
-                src="/music2.jpg"
-                alt="Playing marimba"
-                className="rounded-lg aspect-video object-cover shadow-lg border border-slate-700/50"
+              <ImageWithHover
+                src="/bass.jpg"
+                alt="Bass Clarinet (not my bass clarinet. i found this on pinterest)"
+                className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
-              <img
-                src="/music3.jpg"
-                alt="Playing guitar"
-                className="rounded-lg aspect-video object-cover shadow-lg border border-slate-700/50"
+              <ImageWithHover
+                src="/drums.jpg"
+                alt="Drumset (not my drumset. i also found this on pinterest)"
+                className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
             </div>
           </InterestSection>
 
-          {/* Fashion Section */}
+          {/* Favorite Study Spots Section */}
+          <InterestSection
+            title="Favorite Study Spots"
+            icon={<IconBooks className="w-8 h-8 text-sky-400" stroke={1.5} />}
+          >
+            <p className="text-slate-200 text-lg leading-relaxed font-alpino">
+              I&apos;m always on the hunt for the perfect study environment. I
+              love cozy coffee shops and quiet libraries. The Huntington Beach
+              Library holds a special place in my heart.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="md:col-span-2 space-y-4">
+                <div className="w-full">
+                  <ImageWithHover
+                    src="/b1.png"
+                    alt="Cool building from Chico State"
+                    className="rounded-lg aspect-video object-cover w-full shadow-lg border border-slate-700/50"
+                  />
+                </div>
+                <div className="grid grid-cols-3 gap-4">
+                  <ImageWithHover
+                    src="/b5.JPG"
+                    alt="Picture of greenery from Huntington Beach Library"
+                    className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
+                  />
+                  <ImageWithHover
+                    src="/b4.JPG"
+                    alt="More greenery from Huntington Beach Library"
+                    className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
+                  />
+                  <ImageWithHover
+                    src="/b2.png"
+                    alt="Li Ka Shing Center in UCB"
+                    className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
+                  />
+                </div>
+              </div>
+              <div>
+                <ImageWithHover
+                  src="/b3.png"
+                  alt="Study spot in UCB (Cafe Milano)"
+                  className="rounded-lg h-full w-full object-cover shadow-lg border border-slate-700/50"
+                />
+              </div>
+            </div>
+          </InterestSection>
 
           {/* San Francisco Section */}
           <InterestSection
@@ -144,25 +181,50 @@ const About = () => {
               scene to its diverse culture, San Francisco feels like home.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <img
+              <ImageWithHover
                 src="/sf1.jpg"
-                alt="Golden Gate Bridge"
+                alt="Cool building from SF"
                 className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
-              <img
+              <ImageWithHover
                 src="/sf2.JPG"
-                alt="SF Streets"
+                alt="Me holding the entire Golden Gate Bridge!"
                 className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
-              <img
+              <ImageWithHover
                 src="/sf3.png"
-                alt="SF Skyline"
+                alt="1 sansome street"
                 className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
-              <img
+              <ImageWithHover
                 src="/sf4.JPG"
-                alt="SF Skyline"
+                alt="Palace of Fine Arts"
                 className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
+              />
+            </div>
+          </InterestSection>
+
+          {/* Marine Life Section */}
+          <InterestSection
+            title="Orca Lover"
+            icon={<IconFish className="w-8 h-8 text-sky-400" stroke={1.5} />}
+          >
+            <p className="text-slate-200 text-lg leading-relaxed font-alpino">
+              I have a deep fascination with orcas, these intelligent and
+              majestic creatures of the ocean. Their complex social structures
+              and hunting strategies never cease to amaze me. Also, they are so
+              cute!
+            </p>
+            <div className="grid grid-cols-2 gap-6">
+              <ImageWithHover
+                src="/orca1.jpg"
+                alt="REAL ORCA"
+                className="rounded-lg aspect-video object-cover h-[400px] shadow-lg border border-slate-700/50"
+              />
+              <ImageWithHover
+                src="/orca2.jpg"
+                alt="Cute orca stuffed animal"
+                className="rounded-lg aspect-video object-cover h-[400px] shadow-lg border border-slate-700/50"
               />
             </div>
           </InterestSection>
@@ -179,22 +241,22 @@ const About = () => {
               of matcha. Coding + Matcha = 💚
             </p>
             <div className="grid grid-cols-4 gap-6">
-              <img
+              <ImageWithHover
                 src="/matcha1.JPG"
                 alt="Matcha"
                 className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
-              <img
+              <ImageWithHover
                 src="/matcha2.JPG"
                 alt="Matcha"
                 className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
-              <img
+              <ImageWithHover
                 src="/matcha3.JPG"
                 alt="Matcha"
                 className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
               />
-              <img
+              <ImageWithHover
                 src="/matcha4.JPG"
                 alt="Matcha"
                 className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
@@ -213,65 +275,27 @@ const About = () => {
               something special. I believe that everything is a learnable skill
               and I&apos;m always looking to improve.
             </p>
-            <div className="grid grid-cols-3 gap-6">
-              <img
-                src="/cooking1.jpg"
-                alt="Cooking process"
-                className="rounded-lg aspect-video object-cover shadow-lg border border-slate-700/50"
+            <div className="grid grid-cols-4 gap-6">
+              <ImageWithHover
+                src="/food1.JPG"
+                alt="Making meal prep"
+                className="rounded-lg aspect-video h-[400px] object-cover shadow-lg border border-slate-700/50"
               />
-              <img
-                src="/cooking2.jpg"
+              <ImageWithHover
+                src="/food2.JPG"
                 alt="Plated dish"
-                className="rounded-lg aspect-video object-cover shadow-lg border border-slate-700/50"
+                className="rounded-lg aspect-video h-[400px] object-cover shadow-lg border border-slate-700/50"
               />
-              <img
-                src="/cooking3.jpg"
-                alt="Baking"
-                className="rounded-lg aspect-video object-cover shadow-lg border border-slate-700/50"
+              <ImageWithHover
+                src="/food3.JPG"
+                alt="Awesome pasta"
+                className="rounded-lg aspect-video h-[400px] object-cover shadow-lg border border-slate-700/50"
               />
-            </div>
-          </InterestSection>
-
-          {/* Study Spots Section */}
-          <InterestSection
-            title="Favorite Study Spots"
-            icon={<IconBooks className="w-8 h-8 text-sky-400" stroke={1.5} />}
-          >
-            <p className="text-slate-200 text-lg leading-relaxed font-alpino">
-              I&apos;m always on the hunt for the perfect study environment. I
-              love cozy coffee shops and quiet libraries. The Huntington Beach
-              Library holds a special place in my heart.
-            </p>
-            <div className="space-y-4">
-              <div className="w-full">
-                <img
-                  src="/b1.png"
-                  alt="Study spot"
-                  className="rounded-lg aspect-video object-cover w-full shadow-lg border border-slate-700/50"
-                />
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <img
-                  src="/b2.png"
-                  alt="Study spot"
-                  className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
-                />
-                <img
-                  src="/b3.png"
-                  alt="Study spot"
-                  className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
-                />
-                <img
-                  src="/b4.JPG"
-                  alt="Study spot"
-                  className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
-                />
-                <img
-                  src="/b5.JPG"
-                  alt="Study spot"
-                  className="rounded-lg h-[400px] w-full object-cover shadow-lg border border-slate-700/50"
-                />
-              </div>
+              <ImageWithHover
+                src="/food4.JPG"
+                alt="Perfect steak"
+                className="rounded-lg aspect-video h-[400px] object-cover shadow-lg border border-slate-700/50"
+              />
             </div>
           </InterestSection>
         </div>
