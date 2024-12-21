@@ -202,11 +202,6 @@ function Experience() {
                 </p>
               </motion.div>
             </div>
-
-            {/* Add decorative line between experiences */}
-            {index !== experiences.length - 1 && (
-              <div className="absolute -bottom-16 left-0 w-full h-px bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800" />
-            )}
           </motion.article>
         ))}
       </div>
