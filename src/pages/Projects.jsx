@@ -1,6 +1,6 @@
 import PageLayout from "@/components/PageLayout";
 import { motion } from "framer-motion";
-import { IconSparkles } from "@tabler/icons-react";
+import { IconSparkles, IconTrophy } from "@tabler/icons-react";
 
 const projects = [
   {
@@ -25,10 +25,11 @@ const projects = [
     image: "/cleanasf.png",
     link: "https://devpost.com/software/cleanasf",
     highlight: "Won 'Best Use of Neurelo' among 500+ participants",
+    isWinner: true,
   },
   {
     title: "EasyPC",
-    subtitle: "'Best Use of MindsDB' by Calhacks",
+    subtitle: "'Best Use of MindsDB' by Cal Hacks 10.0 (UC Berkeley)",
     date: "Oct 2023",
     tech: ["Python", "Next.js", "React-Three-Fiber", "Selenium"],
     description: (
@@ -49,10 +50,11 @@ const projects = [
     image: "/easypc.jpeg",
     link: "https://devpost.com/software/easypc",
     highlight: "First Place Winner among 2000+ contestants",
+    isWinner: true,
   },
   {
     title: "Sonder",
-    subtitle: "'Best Blockchain Hack' by IrvineHacks",
+    subtitle: "'Best Blockchain Hack' by IrvineHacks 2024 (UC Irvine)",
     date: "Jan 2024",
     tech: ["Vite", "React", "Tailwind", "Firebase", "Metamask"],
     description: (
@@ -71,6 +73,7 @@ const projects = [
     image: "/sonder.png",
     link: "https://devpost.com/software/sonder-xiu693",
     highlight: "Won 'Best Blockchain Hack' at IrvineHacks 2024",
+    isWinner: true,
   },
   {
     title: "Data @ UCI Website",
@@ -154,7 +157,13 @@ const Projects = () => {
               {/* Header */}
               <header className="space-y-4">
                 <div className="space-y-2">
-                  <h2 className="text-6xl font-bold text-slate-100 font-alpino tracking-tight">
+                  <h2 className="text-6xl font-bold text-slate-100 font-alpino tracking-tight flex items-center gap-3">
+                    {project.isWinner && (
+                      <IconTrophy
+                        className="w-12 h-12 text-yellow-400"
+                        stroke={1.5}
+                      />
+                    )}
                     {project.title}
                   </h2>
                   <div className="flex items-center gap-3 text-slate-300">
@@ -197,11 +206,22 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="block h-full"
                     >
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 brightness-90 group-hover:brightness-100"
-                      />
+                      <div className="relative w-full h-full">
+                        {/* Blur placeholder */}
+                        <div
+                          className="absolute inset-0"
+                          style={{
+                            backgroundColor: "rgba(0, 0, 0, 0.1)",
+                            backdropFilter: "blur(20px)",
+                          }}
+                        />
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="relative w-full h-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 brightness-90 group-hover:brightness-100"
+                          loading="lazy"
+                        />
+                      </div>
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] group-hover:backdrop-blur-sm" />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
                         <p className="text-xl text-white font-alpino text-center px-6 flex items-center gap-2">
