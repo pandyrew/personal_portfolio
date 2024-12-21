@@ -7,6 +7,7 @@ import {
   IconStars,
   IconBracketsAngle,
 } from "@tabler/icons-react";
+import { motion } from "framer-motion";
 
 const skillCategories = {
   "Favorite Stack": {
@@ -78,7 +79,12 @@ const skillCategories = {
 };
 
 const FavoriteStack = () => (
-  <div className="relative p-8 bg-slate-800/30 rounded-xl border border-slate-700/50 backdrop-blur-sm pointer-events-auto">
+  <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    className="relative p-8 bg-slate-800/30 rounded-xl border border-slate-700/50 backdrop-blur-sm pointer-events-auto"
+  >
     <h2 className="text-4xl font-bold text-slate-200 font-alpino flex items-center gap-4 mb-12">
       <IconStars className="w-8 h-8 text-teal-400" stroke={1.5} />
       Favorite Stack
@@ -86,7 +92,13 @@ const FavoriteStack = () => (
 
     <div className="grid grid-cols-3 gap-8">
       {/* Frontend Layer */}
-      <div className="col-span-3 flex justify-center gap-6">
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="col-span-3 flex justify-center gap-6"
+      >
         <div className="relative group p-4 bg-sky-500/10 rounded-lg border border-sky-500/30 w-48 text-center">
           <h3 className="text-xl font-alpino text-sky-400">NextJS</h3>
           <p className="text-sm text-slate-400 font-alpino">Framework</p>
@@ -97,10 +109,16 @@ const FavoriteStack = () => (
           <p className="text-sm text-slate-400 font-alpino">Styling</p>
           <div className="absolute inset-0 bg-gradient-to-r from-rose-500/0 via-rose-500/5 to-rose-500/0 opacity-0 group-hover:opacity-100 duration-300 transition-opacity rounded-lg" />
         </div>
-      </div>
+      </motion.div>
 
       {/* Backend Layer */}
-      <div className="col-span-3 flex justify-center gap-6 -mt-4">
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4 }}
+        className="col-span-3 flex justify-center gap-6 -mt-4"
+      >
         <div className="relative group p-4 bg-emerald-500/10 rounded-lg border border-emerald-500/30 w-48 text-center">
           <h3 className="text-xl font-alpino text-emerald-400">FastAPI</h3>
           <p className="text-sm text-slate-400 font-alpino">Backend</p>
@@ -111,10 +129,16 @@ const FavoriteStack = () => (
           <p className="text-sm text-slate-400 font-alpino">Auth</p>
           <div className="absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-500/5 to-violet-500/0 opacity-0 group-hover:opacity-100 duration-300 transition-opacity rounded-lg" />
         </div>
-      </div>
+      </motion.div>
 
       {/* Database Layer */}
-      <div className="col-span-3 flex justify-center gap-6 -mt-4">
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.6 }}
+        className="col-span-3 flex justify-center gap-6 -mt-4"
+      >
         <div className="relative group p-4 bg-amber-500/10 rounded-lg border border-amber-500/30 w-48 text-center">
           <h3 className="text-xl font-alpino text-amber-400">DSQL</h3>
           <p className="text-sm text-slate-400 font-alpino">Database</p>
@@ -125,15 +149,32 @@ const FavoriteStack = () => (
           <p className="text-sm text-slate-400 font-alpino">ORM</p>
           <div className="absolute inset-0 bg-gradient-to-r from-teal-500/0 via-teal-500/5 to-teal-500/0 opacity-0 group-hover:opacity-100 duration-300 transition-opacity rounded-lg" />
         </div>
-      </div>
+      </motion.div>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Skills = () => {
   return (
     <PageLayout text="Skills">
       <div className="min-h-screen pt-20 px-4 md:px-8 lg:px-16 pb-12">
+        <div className="relative mb-20">
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-7xl font-bold text-slate-200 tracking-tight font-alpino"
+          >
+            Technical
+            <br />
+            Skills
+          </motion.h1>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            className="h-1 w-32 bg-teal-400 mt-6"
+          />
+        </div>
+
         <div className="max-w-6xl mx-auto space-y-32">
           {/* Favorite Stack */}
           <FavoriteStack />
@@ -141,14 +182,25 @@ const Skills = () => {
           {/* Other Categories */}
           {Object.entries(skillCategories)
             .filter(([category]) => category !== "Favorite Stack")
-            .map(([category, { icon, skills }]) => (
-              <div key={category} className="space-y-8">
+            .map(([category, { icon, skills }], categoryIndex) => (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                key={category}
+                className="space-y-8"
+              >
                 <h2 className="text-4xl font-bold text-slate-200 font-alpino flex items-center gap-4">
                   {icon} {category}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {skills.map((skill) => (
-                    <div
+                  {skills.map((skill, index) => (
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.05 }}
                       key={skill.name}
                       className="group relative p-4 bg-slate-800/50 rounded-lg border border-slate-700/50 backdrop-blur-sm overflow-hidden"
                     >
@@ -161,10 +213,12 @@ const Skills = () => {
                         </p>
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-r from-slate-800/0 via-slate-800/5 to-slate-800/0 group-hover:translate-x-full duration-1000 transition-transform" />
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+
+                {/* Add decorative line between categories */}
+              </motion.div>
             ))}
         </div>
       </div>
