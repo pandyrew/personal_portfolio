@@ -28,7 +28,7 @@ const FooterLink = ({ href, text, color = "hover:text-rose-400" }) => (
 
 const Footer = () => {
   return (
-    <footer className="w-full py-20 px-8 pointer-events-auto">
+    <footer className="w-full py-20 pb-10 px-8 pointer-events-auto">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row justify-between gap-20">
           {/* Left Side */}

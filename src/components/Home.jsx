@@ -52,7 +52,7 @@ const Home = () => {
         <div className="relative">
           <h1
             key={displayText}
-            className={`text-7xl font-chillax absolute left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-300 ${
+            className={`text-7xl font-alpino absolute left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-300 ${
               hoveredGroup ? groupColors[hoveredGroup] : "text-slate-800"
             } ${displayText === "Andrew Hwang" ? "opacity-70" : "opacity-100"}`}
             style={{

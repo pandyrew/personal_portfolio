@@ -1,4 +1,6 @@
 import PageLayout from "@/components/PageLayout";
+import { IconSparkles } from "@tabler/icons-react";
+import { motion } from "framer-motion";
 
 const experiences = [
   {
@@ -22,8 +24,11 @@ const experiences = [
     ),
     image: "/suits.webp",
     skills: ["Python", "FastAPI", "LangChain", "Ollama", "PyTorch"],
-    highlight:
-      "Authored an accepted paper on a local RAG model for NASA astronauts",
+    highlight: (
+      <span className="flex items-center gap-2">
+        Authored an accepted paper on a local RAG model for NASA astronauts
+      </span>
+    ),
     photoDescription: "Astronauts testing the MCS (Mission Control Software)",
   },
   {
@@ -63,8 +68,12 @@ const experiences = [
       "Prisma",
       "PostgreSQL",
     ],
-    highlight:
-      "Led by example, mentored 4 interns to develop a full-stack web application",
+    highlight: (
+      <span className="flex items-center gap-2">
+        Led by example, mentored 4 interns to develop a full-stack web
+        application
+      </span>
+    ),
     photoDescription: "Atoma Media Dashboard",
   },
 ];
@@ -72,10 +81,33 @@ const experiences = [
 function Experience() {
   return (
     <PageLayout text="Career">
-      <div className="h-[20vh]" />
-      <div className="max-w-4xl mx-auto space-y-32 p-4 pb-12">
+      <div className="relative pt-20 px-4 md:px-8 lg:px-16">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-7xl font-bold text-slate-200 tracking-tight font-alpino"
+        >
+          Professional
+          <br />
+          Experience
+        </motion.h1>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          className="h-1 w-32 bg-rose-400 mt-6"
+        />
+      </div>
+
+      <div className="max-w-4xl mx-auto space-y-32 p-4 pb-12 mt-12">
         {experiences.map((exp, index) => (
-          <article key={exp.title} className="space-y-2">
+          <motion.article
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.2 }}
+            key={exp.title}
+            className="space-y-2"
+          >
             {/* Header */}
             <header className="space-y-4">
               <div className="space-y-2">
@@ -110,7 +142,10 @@ function Experience() {
                 {exp.description}
               </div>
 
-              <div className="pointer-events-auto h-[400px] overflow-hidden rounded-xl border border-slate-700/50">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="pointer-events-auto h-[400px] overflow-hidden rounded-xl border border-slate-700/50"
+              >
                 <div className="relative h-full group">
                   <a
                     href={exp.link}
@@ -147,13 +182,32 @@ function Experience() {
                     </div>
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700/50 backdrop-blur-md">
-                <p className="text-rose-300 font-medium">✨ {exp.highlight}</p>
-              </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="bg-slate-800/50 rounded-lg p-6 border border-slate-700/50 backdrop-blur-md"
+              >
+                <p className="text-rose-300 font-medium">
+                  {" "}
+                  <span className="flex items-center gap-2">
+                    <IconSparkles
+                      className="w-5 h-5 text-yellow-400"
+                      stroke={1.5}
+                    />
+                    {exp.highlight}
+                  </span>
+                </p>
+              </motion.div>
             </div>
-          </article>
+
+            {/* Add decorative line between experiences */}
+            {index !== experiences.length - 1 && (
+              <div className="absolute -bottom-16 left-0 w-full h-px bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800" />
+            )}
+          </motion.article>
         ))}
       </div>
     </PageLayout>
