@@ -1,5 +1,5 @@
 import PageLayout from "@/components/PageLayout";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { IconSparkles, IconTrophy } from "@tabler/icons-react";
 
 const projects = [
@@ -78,50 +78,69 @@ const projects = [
   {
     title: "Data @ UCI Website",
     subtitle: "Official Club Website",
-    date: "May 2024",
-    tech: ["Next.js", "Tailwind", "AceternityUI", "Clerk", "dSQL"],
+    date: "Jul 2024",
+    tech: [
+      "Next.js",
+      "Tailwind",
+      "AceternityUI",
+      "Figma",
+      "React",
+      "Framer Motion",
+    ],
     description: (
       <>
-        Developed the official website for Data @ UCI using modern technologies.
-        Implemented a{" "}
-        <span className="text-violet-400 font-medium">
-          sleek application system
-        </span>{" "}
-        serving 300+ applicants. Built with{" "}
+        Was the sole developer for Data @ UCI&apos;s official website. Designed
+        the UI/UX in <span className="text-violet-400 font-medium">Figma</span>{" "}
+        and developed with{" "}
         <span className="text-violet-400 font-medium">Next.js</span>,{" "}
-        <span className="text-violet-400 font-medium">Clerk</span>, and{" "}
-        <span className="text-violet-400 font-medium">dSQL</span> for robust
-        performance and security.
+        <span className="text-violet-400 font-medium">Framer Motion</span>,{" "}
+        <span className="text-violet-400 font-medium">Tailwind</span>,{" "}
+        <span className="text-violet-400 font-medium">React</span>, and{" "}
+        <span className="text-violet-400 font-medium">AceternityUI</span>.
       </>
     ),
     image: "/dataatuci.png",
     link: "https://dataatuci.com",
-    highlight: "Serving 300+ active members and applicants",
+    highlight: "Serving 300+ active members",
   },
   {
-    title: "Kyla Ulug",
-    subtitle: "Personal Portfolio Website",
-    date: "May 2024",
-    tech: ["Next.js", "Tailwind", "Framer Motion", "Vercel"],
+    title: "Website for Kyla Uluğ",
+    subtitle: "Birthday Website For My Friend",
+    date: "Feb 2024",
+    tech: [
+      "Next.js",
+      "Tailwind",
+      "Framer Motion",
+      "Vercel",
+      "React",
+      "Firebase",
+    ],
     description: (
       <>
-        Designed and developed a modern portfolio website with smooth animations
-        and interactions. Utilized{" "}
-        <span className="text-violet-400 font-medium">Framer Motion</span> for
-        engaging animations and{" "}
-        <span className="text-violet-400 font-medium">Tailwind CSS</span> for
-        responsive design. Deployed on{" "}
-        <span className="text-violet-400 font-medium">Vercel</span> for optimal
-        performance.
+        Developed a personal website for a friend using{" "}
+        <span className="text-violet-400 font-medium">Next.js</span> and{" "}
+        <span className="text-violet-400 font-medium">React</span>. Integrated{" "}
+        <span className="text-violet-400 font-medium">Firebase</span> to create
+        an interactive birthday wishes system where visitors can leave
+        celebratory messages. Styled with{" "}
+        <span className="text-violet-400 font-medium">Tailwind CSS</span> and
+        hosted on <span className="text-violet-400 font-medium">Vercel</span>{" "}
+        with a fun custom domain. A meaningful project that combined technical
+        learning with creating something special for a friend.
       </>
     ),
     image: "/kylaulug.png",
     link: "https://kylaulug.lol",
-    highlight: "Modern portfolio with seamless animations",
+    highlight: "She loved it!",
   },
 ];
 
 const Projects = () => {
+  const { scrollYProgress } = useScroll();
+
+  const leftColumnY = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const rightColumnY = useTransform(scrollYProgress, [0, 1], [0, 300]);
+
   return (
     <PageLayout text="Projects">
       <div className="min-h-screen pt-20 px-4 md:px-8 lg:px-16">
@@ -144,128 +163,253 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-32">
-          {projects.map((project, index) => (
-            <motion.article
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              key={project.title}
-              className="space-y-8"
-            >
-              {/* Header */}
-              <header className="space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-6xl font-bold text-slate-100 font-alpino tracking-tight flex items-center gap-3">
-                    {project.isWinner && (
-                      <IconTrophy
-                        className="w-12 h-12 text-yellow-400"
-                        stroke={1.5}
-                      />
-                    )}
-                    {project.title}
-                  </h2>
-                  <div className="flex items-center gap-3 text-slate-300">
-                    <h3 className="text-3xl font-alpino">{project.subtitle}</h3>
-                    <span className="text-slate-500">•</span>
-                    <p className="text-xl font-alpino">{project.date}</p>
-                  </div>
-                </div>
-                <div className="border-t border-slate-800 pt-6" />
-              </header>
-
-              {/* Content */}
-              <div className="space-y-8">
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-3">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-4 py-2 bg-slate-800/50 text-slate-200 rounded-full text-sm font-alpino backdrop-blur-sm border border-slate-700/50"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Description */}
-                <div className="text-slate-200 leading-relaxed text-xl font-alpino">
-                  {project.description}
-                </div>
-
-                {/* Image */}
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="pointer-events-auto h-[400px] overflow-hidden rounded-xl border border-slate-700/50"
-                >
-                  <div className="relative h-full group">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block h-full"
-                    >
-                      <div className="relative w-full h-full">
-                        {/* Blur placeholder */}
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            backgroundColor: "rgba(0, 0, 0, 0.1)",
-                            backdropFilter: "blur(20px)",
-                          }}
-                        />
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="relative w-full h-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 brightness-90 group-hover:brightness-100"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] group-hover:backdrop-blur-sm" />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                        <p className="text-xl text-white font-alpino text-center px-6 flex items-center gap-2">
-                          Visit Project
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={2}
-                            stroke="currentColor"
-                            className="w-5 h-5"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                            />
-                          </svg>
-                        </p>
-                      </div>
-                    </a>
-                  </div>
-                </motion.div>
-
-                {/* Highlight */}
-                <motion.div
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <motion.div style={{ y: leftColumnY }} className="space-y-16">
+            {projects
+              .filter((_, i) => i % 2 === 0)
+              .map((project) => (
+                <motion.article
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  className="bg-slate-800/50 rounded-lg p-6 border border-slate-700/50 backdrop-blur-md"
+                  key={project.title}
+                  className="space-y-8"
                 >
-                  <p className="text-violet-300 font-medium">
-                    <span className="flex items-center gap-2">
-                      <IconSparkles
-                        className="w-5 h-5 text-yellow-400"
-                        stroke={1.5}
-                      />
-                      {project.highlight}
-                    </span>
-                  </p>
-                </motion.div>
-              </div>
-            </motion.article>
-          ))}
+                  {/* Image Section - Now at the top */}
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="pointer-events-auto aspect-[16/9] overflow-hidden rounded-xl border border-slate-700/50"
+                  >
+                    <div className="relative h-full group">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block h-full"
+                      >
+                        <div className="relative w-full h-full">
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              backgroundColor: "rgba(0, 0, 0, 0.1)",
+                              backdropFilter: "blur(20px)",
+                            }}
+                          />
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="relative w-full h-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 brightness-90 group-hover:brightness-100"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] group-hover:backdrop-blur-sm" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                          <p className="text-xl text-white font-alpino text-center px-6 flex items-center gap-2">
+                            Visit Project
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={2}
+                              stroke="currentColor"
+                              className="w-5 h-5"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                              />
+                            </svg>
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </motion.div>
+
+                  {/* Project Info */}
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <h2 className="text-4xl font-bold text-slate-100 font-alpino tracking-tight flex items-center gap-3">
+                        {project.isWinner && (
+                          <IconTrophy
+                            className="w-8 h-8 text-yellow-400"
+                            stroke={1.5}
+                          />
+                        )}
+                        {project.title}
+                      </h2>
+                      <div className="flex items-center gap-3 text-slate-300">
+                        <h3 className="text-xl font-alpino">
+                          {project.subtitle}
+                        </h3>
+                        <span className="text-slate-500">•</span>
+                        <p className="text-lg font-alpino">{project.date}</p>
+                      </div>
+                    </div>
+
+                    {/* Tech Stack Pills */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-slate-800/50 text-slate-200 rounded-full text-sm font-alpino backdrop-blur-sm border border-slate-700/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Description */}
+                    <div className="text-slate-200 leading-relaxed text-lg font-alpino">
+                      {project.description}
+                    </div>
+
+                    {/* Highlight */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50 backdrop-blur-md"
+                    >
+                      <p className="text-violet-300 font-medium font-alpino">
+                        <span className="flex items-center gap-2">
+                          <IconSparkles
+                            className="w-5 h-5 text-yellow-400"
+                            stroke={1.5}
+                          />
+                          {project.highlight}
+                        </span>
+                      </p>
+                    </motion.div>
+                  </div>
+                </motion.article>
+              ))}
+          </motion.div>
+
+          <motion.div
+            style={{ y: rightColumnY }}
+            className="space-y-16 lg:mt-32"
+          >
+            {projects
+              .filter((_, i) => i % 2 === 1)
+              .map((project) => (
+                <motion.article
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  key={project.title}
+                  className="space-y-8"
+                >
+                  {/* Image Section - Now at the top */}
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="pointer-events-auto aspect-[16/9] overflow-hidden rounded-xl border border-slate-700/50"
+                  >
+                    <div className="relative h-full group">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block h-full"
+                      >
+                        <div className="relative w-full h-full">
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              backgroundColor: "rgba(0, 0, 0, 0.1)",
+                              backdropFilter: "blur(20px)",
+                            }}
+                          />
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="relative w-full h-full object-cover object-center group-hover:scale-[1.02] transition-all duration-500 brightness-90 group-hover:brightness-100"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] group-hover:backdrop-blur-sm" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                          <p className="text-xl text-white font-alpino text-center px-6 flex items-center gap-2">
+                            Visit Project
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={2}
+                              stroke="currentColor"
+                              className="w-5 h-5"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                              />
+                            </svg>
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </motion.div>
+
+                  {/* Project Info */}
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <h2 className="text-4xl font-bold text-slate-100 font-alpino tracking-tight flex items-center gap-3">
+                        {project.isWinner && (
+                          <IconTrophy
+                            className="w-8 h-8 text-yellow-400"
+                            stroke={1.5}
+                          />
+                        )}
+                        {project.title}
+                      </h2>
+                      <div className="flex items-center gap-3 text-slate-300">
+                        <h3 className="text-xl font-alpino">
+                          {project.subtitle}
+                        </h3>
+                        <span className="text-slate-500">•</span>
+                        <p className="text-lg font-alpino">{project.date}</p>
+                      </div>
+                    </div>
+
+                    {/* Tech Stack Pills */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-slate-800/50 text-slate-200 rounded-full text-sm font-alpino backdrop-blur-sm border border-slate-700/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Description */}
+                    <div className="text-slate-200 leading-relaxed text-lg font-alpino">
+                      {project.description}
+                    </div>
+
+                    {/* Highlight */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50 backdrop-blur-md"
+                    >
+                      <p className="text-violet-300 font-medium font-alpino">
+                        <span className="flex items-center gap-2">
+                          <IconSparkles
+                            className="w-5 h-5 text-yellow-400"
+                            stroke={1.5}
+                          />
+                          {project.highlight}
+                        </span>
+                      </p>
+                    </motion.div>
+                  </div>
+                </motion.article>
+              ))}
+          </motion.div>
         </div>
       </div>
     </PageLayout>
