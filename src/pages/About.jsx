@@ -1,4 +1,4 @@
-import TimelineDemo from "@/components/Timeline";
+import MyTimeline from "@/components/Timeline";
 import PageLayout from "@/components/PageLayout";
 import { motion } from "framer-motion";
 
@@ -24,7 +24,7 @@ const About = () => {
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <TimelineDemo />
+          <MyTimeline />
         </div>
       </div>
     </PageLayout>
