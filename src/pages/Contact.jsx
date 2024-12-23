@@ -20,7 +20,7 @@ const Contact = () => {
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-7xl font-bold text-slate-200 tracking-tight font-alpino"
+              className="text-7xl font-bold text-slate-200 tracking-tight font-array"
             >
               Let&apos;s
               <br />
@@ -72,8 +72,8 @@ const Contact = () => {
                   />
                 </svg>
               </a>
-              ) There&apos;s something magical about those spaces, don&apos;t you
-              think?
+              ) There&apos;s something magical about those spaces, don&apos;t
+              you think?
             </p>
 
             <p className="leading-relaxed">

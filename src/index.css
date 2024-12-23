@@ -1,6 +1,9 @@
 @import url("https://api.fontshare.com/v2/css?f[]=chillax@1&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=alpino@1&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=array@700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=array@400&display=swap");
 
+@tailwind base;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,6 +22,14 @@
 
   .font-alpino {
     font-family: "Alpino", sans-serif;
+  }
+
+  .font-array {
+    font-family: "Array", sans-serif;
+  }
+
+  .font-array-400 {
+    font-family: "Array", sans-serif;
   }
 
   .dotted-blur-bg {

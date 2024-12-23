@@ -58,14 +58,68 @@ const About = () => {
   return (
     <PageLayout text="About">
       <div className="min-h-screen pt-20 px-4 md:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left side - Text */}
+            <div className="space-y-6">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-6xl font-bold text-slate-200 tracking-tight font-array"
+              >
+                Hey, I&apos;m Andrew 👋
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-xl text-slate-300 leading-relaxed font-alpino"
+              >
+                A software engineer with a passion for building things that
+                matter. Currently exploring the intersections of data science,
+                AI, and web development.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="bg-slate-800/50 rounded-lg p-6 border border-slate-700/50 backdrop-blur-sm"
+              >
+                <p className="text-slate-300 font-alpino">
+                  I believe in the power of technology to solve real-world
+                  problems. When I&apos;m not coding, you&apos;ll find me
+                  exploring new coffee shops, practicing instruments, or diving
+                  deep into quantum computing research.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Right side - Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+              className="relative aspect-square w-full max-w-md mx-auto lg:ml-auto"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 to-violet-500/20 blur-3xl" />
+              <img
+                src="/andrew1.jpg"
+                alt="Andrew Hwang"
+                className="relative rounded-2xl w-full h-full object-cover border border-slate-700/50"
+              />
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Your Original Content */}
         <div className="max-w-7xl mx-auto">
           <div className="relative mb-20">
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-7xl font-bold text-slate-200 tracking-tight font-alpino"
+              className="text-7xl font-bold text-slate-200 tracking-tight font-array"
             >
-              About Andrew
+              Timeline
             </motion.h1>
             <motion.div
               initial={{ scaleX: 0 }}

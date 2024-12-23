@@ -109,7 +109,7 @@ const involvements = [
 const Involvement = () => {
   return (
     <PageLayout text="Clubs">
-      <div className="min-h-screen pt-20 px-4 md:px-8 lg:px-16 font-alpino">
+      <div className="min-h-screen pt-20 px-4 md:px-8 lg:px-16 font-array">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="relative mb-20">
