@@ -8,6 +8,7 @@ import {
   IconCup,
   IconChefHat,
   IconBooks,
+  IconBrandGithub,
 } from "@tabler/icons-react";
 
 const InterestSection = ({ title, icon, children }) => (
@@ -352,6 +353,94 @@ const About = () => {
               />
             </div>
           </InterestSection>
+        </div>
+
+        {/* Additional Info Section */}
+        <div className="max-w-4xl mx-auto mt-32 mb-16 space-y-16 pointer-events-auto">
+          {/* Credits Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <h2 className="text-3xl font-bold text-slate-200 font-alpino">
+              Credits
+            </h2>
+            <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700/50 backdrop-blur-sm space-y-4">
+              <div className="space-y-2">
+                <h3 className="text-xl text-slate-200 font-alpino">
+                  Gallery Design
+                </h3>
+                <p className="text-slate-300 font-alpino">
+                  Home page gallery design inspired by{" "}
+                  <a
+                    href="https://torquetorque.net"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-400 hover:text-sky-300 transition-colors"
+                  >
+                    torquetorque.net
+                  </a>
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-xl text-slate-200 font-alpino">
+                  Motion & Styling
+                </h3>
+                <p className="text-slate-300 font-alpino">
+                  Page animations and styling inspired by{" "}
+                  <a
+                    href="https://motion.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-400 hover:text-sky-300 transition-colors"
+                  >
+                    motion.dev
+                  </a>
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* GitHub Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <h2 className="text-3xl font-bold text-slate-200 font-alpino">
+              GitHub
+            </h2>
+            <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700/50 backdrop-blur-sm">
+              <div className="flex items-center justify-between">
+                <div className="space-y-2">
+                  <a
+                    href="https://github.com/pandyrew/personal_portfolio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xl text-sky-400 hover:text-sky-300 transition-colors flex items-center gap-2 font-alpino"
+                  >
+                    <IconBrandGithub className="w-6 h-6" />
+                    View Source Code
+                  </a>
+                  <p className="text-slate-300 font-alpino">
+                    Total Lines of Code:{" "}
+                    <span className="text-sky-400">12,345</span>
+                  </p>
+                </div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-slate-700/50 px-4 py-2 rounded-lg border border-slate-600/50"
+                >
+                  <p className="text-slate-200 font-alpino">
+                    Built with React + Vite
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </PageLayout>
