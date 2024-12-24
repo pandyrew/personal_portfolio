@@ -15,7 +15,10 @@ const Home = () => {
   const [displayText, setDisplayText] = useState("andrew hwang");
   const [hoveredGroup, setHoveredGroup] = useState(null);
   const [expandedImage, setExpandedImage] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // Check if images were already loaded in this session
+    return !localStorage.getItem("imagesLoaded");
+  });
 
   const backgroundMult = 3;
   const containerMult = 2.3;
@@ -35,6 +38,12 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    // If images are already loaded, don't show loading screen
+    if (localStorage.getItem("imagesLoaded")) {
+      setIsLoading(false);
+      return;
+    }
+
     const imagePromises = images.map((image) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
@@ -46,7 +55,11 @@ const Home = () => {
 
     Promise.all(imagePromises)
       .then(() => {
-        setTimeout(() => setIsLoading(false), 2000);
+        setTimeout(() => {
+          setIsLoading(false);
+          // Mark images as loaded in localStorage
+          localStorage.setItem("imagesLoaded", "true");
+        }, 2000);
       })
       .catch((error) => {
         console.error("Error loading images:", error);
@@ -143,7 +156,7 @@ const Home = () => {
           {images.map((image) => (
             <div
               key={image.id}
-              className={`absolute w-auto overflow-hidden group transition-opacity duration-300 cursor-pointer ${
+              className={`absolute w-auto overflow-visible group transition-opacity duration-300 cursor-pointer ${
                 hoveredGroup && hoveredGroup !== image.group ? "opacity-20" : ""
               }`}
               style={{
