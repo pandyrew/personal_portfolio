@@ -149,7 +149,7 @@ const Projects = () => {
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-7xl font-bold text-slate-200 tracking-tight font-array-400"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-200 tracking-tight font-array-400"
             >
               Featured
               <br />

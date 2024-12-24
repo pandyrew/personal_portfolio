@@ -295,7 +295,7 @@ const About = () => {
               doesn&apos;t really affect me that much, I still love the ritual
               of matcha. Coding + Matcha = 💚
             </p>
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <ImageWithHover
                 src="/matcha1.JPG"
                 alt="Matcha"
@@ -400,6 +400,22 @@ const About = () => {
                   </a>
                 </p>
               </div>
+              <div className="space-y-2">
+                <h3 className="text-xl text-slate-200 font-alpino">
+                  Gallery Images
+                </h3>
+                <p className="text-slate-300 font-alpino">
+                  Images from my gallery are from{" "}
+                  <a
+                    href="https://www.pinterest.com/andy_hwang/portolfio/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-400 hover:text-sky-300 transition-colors"
+                  >
+                    Pinterest
+                  </a>
+                </p>
+              </div>
             </div>
           </motion.div>
 
@@ -426,8 +442,8 @@ const About = () => {
                     View Source Code
                   </a>
                   <p className="text-slate-300 font-alpino">
-                    Total Lines of Code:{" "}
-                    <span className="text-sky-400">12,345</span>
+                    Total Lines of Code Written:{" "}
+                    <span className="text-sky-400">2950</span>
                   </p>
                 </div>
                 <motion.div

@@ -15,12 +15,12 @@ const Contact = () => {
   return (
     <PageLayout text="Contact">
       <div className="min-h-screen pt-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto">
+        <div className="text-5xl md:text-6xl lg:text-7xl  mx-auto">
           <div className="relative mb-20">
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-7xl font-bold text-slate-200 tracking-tight font-array"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-200 tracking-tight font-array"
             >
               Let&apos;s
               <br />
