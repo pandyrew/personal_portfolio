@@ -74,7 +74,7 @@ export const images = [
   {
     id: 9,
     group: "Involvement",
-    src: "/data-icon.png",
+    src: "/data.png",
     alt: "Gallery image 9",
     top: "70%",
     left: "21%",
